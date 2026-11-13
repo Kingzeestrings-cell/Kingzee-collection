@@ -1,0 +1,761 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#eaf4fc">
+<title>KINGZEE COLLECTION | Discover Elegance</title>
+<style>
+:root{
+ --blue:#eaf4fc;
+ --blue2:#d9eafa;
+ --navy:#183957;
+ --navy2:#294f70;
+ --gold:#c6a15b;
+ --white:#fff;
+ --paper:#f7f9fc;
+ --ink:#263748;
+ --muted:#718092;
+ --line:#e2eaf1;
+ --green:#167b50;
+ --red:#b34444;
+ --shadow:0 7px 25px rgba(24,57,87,.08);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);
+font-family:Arial,Helvetica,sans-serif}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+img{display:block;max-width:100%}
+a{text-decoration:none;color:inherit}
+header{background:var(--white);border-bottom:1px solid var(--line);
+position:sticky;top:0;z-index:30}
+.header-inner{max-width:1250px;margin:auto;padding:13px 20px;
+display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:11px;min-width:0}
+.logo{height:49px;width:49px;border:2px solid var(--gold);
+border-radius:14px;display:grid;place-items:center;
+color:var(--navy);font-size:20px;font-weight:900;flex-shrink:0}
+.brand h1{font-size:16px;letter-spacing:1px;color:var(--navy);margin:0}
+.brand small{display:block;font-size:9px;letter-spacing:2px;
+color:#a08043;margin-top:5px}
+nav{display:flex;align-items:center;gap:4px;flex-wrap:wrap}
+nav button{background:transparent;border:0;padding:10px 11px;
+border-radius:7px;color:var(--navy);font-size:12px;font-weight:600}
+nav button:hover{background:var(--blue)}
+nav .cart-link{background:var(--navy);color:white}
+main{max-width:1250px;margin:auto;padding:24px 18px;min-height:70vh}
+button:focus-visible,a:focus-visible,input:focus-visible,
+select:focus-visible,textarea:focus-visible{
+outline:3px solid #b5d7f2;outline-offset:2px}
+.btn{display:inline-flex;justify-content:center;align-items:center;
+gap:7px;padding:12px 17px;border:0;border-radius:7px;
+background:var(--navy);color:white;font-weight:bold;font-size:13px}
+.btn.gold{background:var(--gold);color:#1c3043}
+.btn.blue{background:#dceefa;color:var(--navy)}
+.btn.green{background:var(--green);color:white}
+.btn.red{background:var(--red);color:white}
+.btn.white{background:white;color:var(--navy);border:1px solid var(--line)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.hero{background:linear-gradient(120deg,#dceefa,#f8fbff);
+border:1px solid #dceaf5;border-radius:17px;padding:45px 35px;
+min-height:310px;display:flex;align-items:center;position:relative;
+overflow:hidden}
+.hero-content{max-width:620px;position:relative;z-index:1}
+.eyebrow{font-size:10px;letter-spacing:3px;color:#9a793b;font-weight:bold}
+.hero h2{font-size:clamp(32px,5vw,55px);line-height:1.1;
+color:var(--navy);margin:14px 0}
+.hero p{font-size:15px;line-height:1.8;color:#526b80;max-width:510px}
+.hero-art{position:absolute;right:4%;bottom:0;width:34%;height:90%;
+display:flex;align-items:center;justify-content:center;opacity:.12;
+font-size:clamp(100px,22vw,250px);font-weight:900;color:var(--navy)}
+.section-title{display:flex;justify-content:space-between;align-items:center;
+gap:12px;margin:30px 0 16px}
+.section-title h2{font-size:22px;color:var(--navy);margin:0}
+.muted{font-size:13px;color:var(--muted);line-height:1.7}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px}
+.card{background:white;border:1px solid var(--line);border-radius:11px;
+overflow:hidden;box-shadow:0 3px 15px #18395708}
+.photo{height:220px;background:#f0f5f9;display:flex;
+align-items:center;justify-content:center;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:contain}
+.no-photo{font-size:12px;color:#8293a3;text-align:center;padding:20px}
+.card-body{padding:14px}
+.category-label{font-size:10px;letter-spacing:1px;text-transform:uppercase;
+color:#9a793b;font-weight:bold}
+.card h3{font-size:15px;color:var(--navy);margin:8px 0}
+.price{font-size:17px;font-weight:bold;color:var(--navy)}
+.stock{font-size:11px;color:var(--green);margin-top:6px}
+.stock.out{color:var(--red)}
+.card-actions{display:flex;gap:7px;margin-top:13px}
+.card-actions button{flex:1;padding:10px 5px;font-size:10px}
+.panel{background:white;border:1px solid var(--line);
+border-radius:11px;padding:20px;margin-bottom:17px;box-shadow:var(--shadow)}
+.panel h2,.panel h3{color:var(--navy);margin-top:0}
+.field{display:flex;flex-direction:column;gap:7px;margin-bottom:13px}
+.field label{font-size:12px;font-weight:bold;color:var(--navy)}
+.field input,.field textarea,.field select{
+width:100%;padding:12px;border:1px solid #dce5ed;
+border-radius:7px;background:white;color:var(--ink);min-width:0}
+.field textarea{min-height:95px;resize:vertical}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.full{grid-column:1/-1}
+.tag{display:inline-block;background:var(--blue);color:var(--navy);
+padding:5px 9px;border-radius:20px;font-size:10px}
+.row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}
+.divider{border:0;border-top:1px solid var(--line);margin:17px 0}
+.notice{padding:13px;background:#fff7e8;color:#745c30;
+border-radius:7px;font-size:13px;line-height:1.6}
+.empty{padding:45px 15px;text-align:center;color:var(--muted)}
+.product-layout{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.gallery img{width:100%;height:235px;object-fit:contain;
+background:#f0f5f9;border-radius:8px}
+.cart-row{display:flex;align-items:center;gap:12px;
+padding:13px 0;border-bottom:1px solid var(--line)}
+.cart-row img{width:70px;height:70px;object-fit:contain;
+background:#f0f5f9;border-radius:7px}
+.cart-info{flex:1;min-width:0}
+.cart-row input{width:65px;padding:9px;border:1px solid var(--line);border-radius:6px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stat{background:var(--blue);padding:17px;border-radius:9px}
+.stat strong{font-size:24px;color:var(--navy)}
+.stat small{display:block;color:var(--muted);margin-top:5px}
+footer{background:var(--navy);color:white;text-align:center;padding:35px 15px}
+footer strong{letter-spacing:2px;color:var(--goldlight)}
+footer p,footer small{color:#d4e1ed;font-size:12px}
+.preview{display:flex;gap:8px;flex-wrap:wrap}
+.preview img{height:80px;width:80px;object-fit:contain;background:var(--blue);
+border-radius:6px}
+.hidden{display:none!important}
+@media(max-width:850px){
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .product-layout{grid-template-columns:1fr}
+ .photo{height:190px}
+}
+@media(max-width:580px){
+ .header-inner{align-items:flex-start;flex-direction:column;padding:12px}
+ nav{width:100%;display:grid;grid-template-columns:repeat(3,1fr)}
+ nav button{padding:11px 3px;font-size:11px}
+ main{padding:17px 12px}
+ .hero{padding:30px 20px;min-height:270px}
+ .hero h2{font-size:36px}
+ .grid{gap:10px}
+ .photo{height:155px}
+ .card-body{padding:10px}
+ .card h3{font-size:13px}
+ .card-actions{flex-direction:column}
+ .card-actions button{width:100%}
+ .form-grid{grid-template-columns:1fr}
+ .full{grid-column:auto}
+ .gallery img{height:160px}
+ .stats{grid-template-columns:1fr 1fr}
+ .section-title h2{font-size:19px}
+ .cart-row{flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+<header>
+ <div class="header-inner">
+  <div class="brand">
+   <div class="logo">KC</div>
+   <div>
+    <h1>KINGZEE COLLECTION</h1>
+    <small>STYLE • QUALITY • ELEGANCE</small>
+   </div>
+  </div>
+  <nav>
+   <button onclick="home()">HOME</button>
+   <button onclick="shop()">SHOP</button>
+   <button onclick="categories()">CATEGORIES</button>
+   <button class="cart-link" onclick="cartPage()">CART (<span id="cartCount">0</span>)</button>
+   <button onclick="about()">ABOUT</button>
+   <button onclick="contact()">CONTACT</button>
+   <button onclick="ownerPage()">OWNER</button>
+  </nav>
+ </div>
+</header>
+<main id="app"><div class="empty">Loading KINGZEE COLLECTION...</div></main>
+<footer>
+ <strong>KINGZEE COLLECTION</strong>
+ <p>Style • Quality • Elegance</p>
+ <small>Ghana · Prices in Ghana Cedis · WhatsApp ordering</small>
+</footer>
+
+<script>
+"use strict";
+
+const DB_NAME="KINGZEE_COLLECTION_V2";
+const STORE="products";
+const WA_DEFAULT="233559114251";
+const CATEGORIES=[
+ "Bags & Wallets","Bottles","Dresses & Clothing","Shoes",
+ "Necklaces","Bracelets","Watches","Personalised Gift Sets",
+ "Awards & Plaques","Corporate Gifts & Accessories"
+];
+
+let db=null, storageMode="indexeddb", products=[], cart=[];
+let loggedIn=false, editingId=null;
+
+const app=document.getElementById("app");
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({
+ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+}[c]));
+const cash=n=>"GH₵"+Number(n||0).toFixed(2);
+const id=()=>"KC-"+Date.now()+"-"+Math.random().toString(36).slice(2,7);
+
+function show(html){
+ app.innerHTML=html;
+ window.scrollTo(0,0);
+}
+
+function openDB(){
+ return new Promise((resolve,reject)=>{
+  try{
+   const factory=window.indexedDB||window.webkitIndexedDB;
+   if(!factory){reject(new Error("IndexedDB unavailable"));return;}
+   const request=factory.open(DB_NAME,1);
+   request.onupgradeneeded=()=>{
+    const d=request.result;
+    if(!d.objectStoreNames.contains(STORE)){
+     d.createObjectStore(STORE,{keyPath:"id"});
+    }
+   };
+   request.onsuccess=()=>{db=request.result;resolve();};
+   request.onerror=()=>reject(request.error||new Error("Database could not open"));
+   request.onblocked=()=>reject(new Error("Close other open tabs and reload."));
+  }catch(e){reject(e);}
+ });
+}
+
+function idbAll(){
+ return new Promise((resolve,reject)=>{
+  const tx=db.transaction(STORE,"readonly");
+  const r=tx.objectStore(STORE).getAll();
+  r.onsuccess=()=>resolve(r.result||[]);
+  r.onerror=()=>reject(r.error);
+ });
+}
+function idbPut(p){
+ return new Promise((resolve,reject)=>{
+  const tx=db.transaction(STORE,"readwrite");
+  tx.objectStore(STORE).put(p);
+  tx.oncomplete=resolve;
+  tx.onerror=()=>reject(tx.error);
+  tx.onabort=()=>reject(tx.error);
+ });
+}
+function idbDelete(key){
+ return new Promise((resolve,reject)=>{
+  const tx=db.transaction(STORE,"readwrite");
+  tx.objectStore(STORE).delete(key);
+  tx.oncomplete=resolve;
+  tx.onerror=()=>reject(tx.error);
+ });
+}
+
+function localAll(){
+ try{return JSON.parse(localStorage.getItem("kc_products_v2")||"[]");}
+ catch(e){return [];}
+}
+function localSave(list){
+ try{
+  localStorage.setItem("kc_products_v2",JSON.stringify(list));
+  return true;
+ }catch(e){
+  alert("Local storage is full. Use fewer or smaller photographs, or export a backup.");
+  return false;
+ }
+}
+async function allProducts(){
+ return storageMode==="indexeddb"?await idbAll():localAll();
+}
+async function saveProduct(p){
+ if(storageMode==="indexeddb")return idbPut(p);
+ const list=localAll();
+ const i=list.findIndex(x=>x.id===p.id);
+ if(i<0)list.push(p);else list[i]=p;
+ if(!localSave(list))throw new Error("Local storage is full");
+}
+async function removeProduct(id){
+ if(storageMode==="indexeddb")return idbDelete(id);
+ localSave(localAll().filter(p=>p.id!==id));
+}
+async function refresh(){
+ products=await allProducts();
+}
+
+function readCart(){
+ try{cart=JSON.parse(localStorage.getItem("kc_cart_v2")||"[]");}
+ catch(e){cart=[];}
+}
+function saveCart(){
+ localStorage.setItem("kc_cart_v2",JSON.stringify(cart));
+ $("cartCount").textContent=cart.reduce((n,x)=>n+x.qty,0);
+}
+function imageURL(image){
+ if(!image)return "";
+ if(typeof image==="string")return image;
+ return URL.createObjectURL(image);
+}
+function imageMarkup(p,index=0){
+ const image=p.images?.[index];
+ return image?`<img src="${imageURL(image)}" alt="${esc(p.name)}">`:
+ '<div class="no-photo">Product photograph</div>';
+}
+function card(p){
+ return `<article class="card">
+ <div class="photo">${imageMarkup(p)}</div>
+ <div class="card-body">
+ <div class="category-label">${esc(p.category)}</div>
+ <h3>${esc(p.name)}</h3>
+ <div class="price">${p.price===null?"Price on Request":cash(p.price)}</div>
+ <div class="stock ${p.stock==="Out of Stock"?"out":""}">${esc(p.stock||"Available")}</div>
+ <div class="card-actions">
+ <button class="btn blue" onclick="details('${p.id}')">VIEW DETAILS</button>
+ <button class="btn" onclick="add('${p.id}')">ADD TO CART</button>
+ </div></div></article>`;
+}
+function home(){
+ const featured=products.filter(p=>p.featured);
+ const list=(featured.length?featured:products).slice(0,4);
+ show(`<section class="hero">
+ <div class="hero-content">
+ <div class="eyebrow">WELCOME TO KINGZEE COLLECTION</div>
+ <h2>Discover elegance.<br>Find your style.</h2>
+ <p>Explore carefully selected fashion, accessories, personalised gifts
+ and corporate collections. Find meaningful gifts and everyday essentials
+ in one convenient shopping experience.</p>
+ <button class="btn gold" onclick="shop()">EXPLORE THE COLLECTION</button>
+ </div><div class="hero-art">KC</div>
+ </section>
+ <div class="section-title"><h2>Featured Collection</h2>
+ <button class="btn blue" onclick="shop()">VIEW ALL</button></div>
+ <div class="grid">${list.map(card).join("")||'<div class="empty">Our collection is being prepared. Please visit again soon.</div>'}</div>
+ <div class="section-title"><h2>Explore Our Categories</h2>
+ <button class="btn blue" onclick="categories()">ALL CATEGORIES</button></div>
+ <div class="panel"><h2>More than a shopping experience</h2>
+ <p class="muted">KINGZEE COLLECTION brings together stylish accessories,
+ fashion pieces, personalised gifts and corporate items. Browse our catalogue,
+ choose your favourites and contact our team directly to confirm your order.</p>
+ <button class="btn" onclick="about()">ABOUT OUR COMPANY</button></div>`);
+}
+function shop(){
+ show(`<div class="section-title"><h2>Shop Our Collection</h2>
+ <span class="muted">${products.length} products</span></div>
+ <div class="field"><input id="search" placeholder="Search products or categories..." oninput="filterShop()"></div>
+ <div class="grid" id="shopGrid">${products.map(card).join("")||'<div class="empty">No products have been posted yet.</div>'}</div>`);
+}
+function filterShop(){
+ const q=$("search").value.toLowerCase();
+ $("shopGrid").innerHTML=products.filter(p=>
+ (p.name+" "+p.category+" "+p.description).toLowerCase().includes(q)
+ ).map(card).join("")||'<div class="empty">No matching products.</div>';
+}
+function categories(){
+ const cats=[...new Set([...CATEGORIES,...products.map(p=>p.category)])];
+ show(`<div class="section-title"><h2>Shop by Category</h2></div>
+ <div class="grid">${cats.map(c=>`<div class="panel">
+ <span class="tag">${products.filter(p=>p.category===c).length} products</span>
+ <h3 style="margin-top:13px">${esc(c)}</h3>
+ <button class="btn blue" onclick="category('${encodeURIComponent(c)}')">EXPLORE CATEGORY</button>
+ </div>`).join("")}</div>`);
+}
+function category(encoded){
+ const c=decodeURIComponent(encoded);
+ const list=products.filter(p=>p.category===c);
+ show(`<div class="section-title"><h2>${esc(c)}</h2>
+ <button class="btn blue" onclick="categories()">BACK</button></div>
+ <div class="grid">${list.map(card).join("")||'<div class="empty">No products in this category yet.</div>'}</div>`);
+}
+function details(pid){
+ const p=products.find(x=>x.id===pid);if(!p)return;
+ show(`<button class="btn blue" onclick="shop()">← BACK TO SHOP</button>
+ <div class="product-layout" style="margin-top:20px">
+ <div class="gallery">${(p.images||[]).map((im,i)=>
+ `<img src="${imageURL(im)}" alt="${esc(p.name)} ${i+1}">`).join("")||
+ '<div class="empty">No photographs uploaded</div>'}</div>
+ <div>
+ <span class="tag">${esc(p.category)}</span>
+ <h1 style="color:var(--navy)">${esc(p.name)}</h1>
+ <div class="price" style="font-size:24px">${p.price===null?"Price on Request":cash(p.price)}</div>
+ <p class="muted">${esc(p.description||"Contact us for further product information.")}</p>
+ <p class="stock ${p.stock==="Out of Stock"?"out":""}">${esc(p.stock)}</p>
+ <div class="field"><label>SELECT VARIATION</label>
+ <select id="variation"><option value="">Choose if applicable</option>
+ ${(p.variations||[]).map(v=>`<option>${esc(v)}</option>`).join("")}</select></div>
+ <div class="field"><label>QUANTITY</label><input id="qty" type="number" min="1" max="99" value="1"></div>
+ <div class="actions">
+ <button class="btn" onclick="addDetails('${p.id}')">ADD TO CART</button>
+ <button class="btn green" onclick="buy('${p.id}')">ORDER VIA WHATSAPP</button>
+ </div>
+ </div></div>`);
+}
+function add(pid){
+ const p=products.find(x=>x.id===pid);if(!p)return;
+ if(p.stock==="Out of Stock"){alert("This product is out of stock.");return;}
+ cart.push({id:pid,qty:1,variation:""});saveCart();
+ alert("Added to your shopping cart.");
+}
+function addDetails(pid){
+ const p=products.find(x=>x.id===pid);if(!p)return;
+ if(p.stock==="Out of Stock"){alert("This product is out of stock.");return;}
+ cart.push({id:pid,qty:Math.max(1,Number($("qty").value)||1),
+ variation:$("variation").value});
+ saveCart();cartPage();
+}
+function buy(pid){addDetails(pid);}
+function cartPage(){
+ const rows=cart.map((item,i)=>{
+ const p=products.find(x=>x.id===item.id);if(!p)return "";
+ return `<div class="cart-row">
+ <div style="width:70px;height:70px;flex-shrink:0" class="photo">${imageMarkup(p)}</div>
+ <div class="cart-info"><strong>${esc(p.name)}</strong>
+ <div class="muted">${esc(item.variation||"Standard")}</div>
+ <div class="price">${p.price===null?"Price on Request":cash(p.price)}</div></div>
+ <input type="number" min="1" max="99" value="${item.qty}" onchange="quantity(${i},this.value)">
+ <button class="btn red" onclick="removeCart(${i})">REMOVE</button>
+ </div>`;
+ }).join("");
+ const total=cart.reduce((n,x)=>{
+ const p=products.find(y=>y.id===x.id);
+ return n+(p&&p.price!==null?p.price*x.qty:0);
+ },0);
+ const unpriced=cart.some(x=>products.find(p=>p.id===x.id)?.price===null);
+ show(`<div class="section-title"><h2>Your Shopping Cart</h2></div>
+ <div class="panel">${rows||'<div class="empty">Your cart is empty. Visit the shop to select products.</div>'}
+ <hr><div class="row"><strong>Subtotal of priced items</strong><strong class="price">${cash(total)}</strong></div>
+ ${unpriced?'<div class="notice">Some products have prices on request. Our team will confirm their prices on WhatsApp.</div>':""}
+ <p class="muted">Delivery and collection arrangements will be confirmed manually.</p>
+ <div class="actions"><button class="btn blue" onclick="shop()">CONTINUE SHOPPING</button>
+ <button class="btn green" onclick="whatsappOrder()" ${cart.length?"":"disabled"}>PLACE ORDER ON WHATSAPP</button></div></div>`);
+}
+function quantity(i,value){cart[i].qty=Math.max(1,Math.min(99,Number(value)||1));saveCart();cartPage();}
+function removeCart(i){cart.splice(i,1);saveCart();cartPage();}
+function whatsappOrder(){
+ if(!cart.length){alert("Your cart is empty.");return;}
+ let total=0;
+ const lines=cart.map((x,i)=>{
+ const p=products.find(y=>y.id===x.id);if(!p)return "";
+ if(p.price!==null)total+=p.price*x.qty;
+ return `${i+1}. ${p.name}
+Quantity: ${x.qty}
+Variation: ${x.variation||"Not specified"}
+Price: ${p.price===null?"Price on Request":cash(p.price)}`;
+ }).filter(Boolean).join("\n\n");
+ const h=new Date().getHours();
+ const greeting=h<12?"Good morning":h<17?"Good afternoon":"Good evening";
+ const message=`Hello KINGZEE COLLECTION, ${greeting}!
+
+I would like to place an order.
+
+SELECTED PRODUCTS
+${lines}
+
+Subtotal of priced products: ${cash(total)}
+
+CUSTOMER DETAILS
+Full name:
+Location:
+Delivery or collection:
+
+Please confirm availability, final prices and payment instructions.
+
+Thank you.`;
+ const number=(localStorage.getItem("kc_whatsapp")||WA_DEFAULT).replace(/\D/g,"");
+ const url="https://wa.me/"+number+"?text="+encodeURIComponent(message);
+
+ // Navigate directly from the user's button press.
+ // This avoids popup blockers that can stop window.open().
+ window.location.assign(url);
+}
+function about(){
+ show(`<div class="panel">
+ <div class="eyebrow">OUR STORY</div>
+ <h1 style="color:var(--navy)">About KINGZEE COLLECTION</h1>
+ <p class="muted">KINGZEE COLLECTION is an online-first shopping brand
+ bringing together fashion, accessories, personalised gifts and corporate
+ gift products.</p>
+ <h3>Our purpose</h3>
+ <p class="muted">We aim to make it easier for customers to discover
+ thoughtful gifts, stylish accessories and useful products for personal
+ and professional occasions.</p>
+ <h3>What we offer</h3>
+ <p class="muted">Our catalogue includes bags, bottles, clothing, shoes,
+ jewellery, watches, customised gift sets, awards, plaques and corporate
+ accessories.</p>
+ <h3>Our customer promise</h3>
+ <p class="muted">We provide clear product information and direct
+ communication so customers can ask questions, confirm availability,
+ agree on prices and arrange delivery.</p>
+ <button class="btn" onclick="shop()">EXPLORE OUR PRODUCTS</button>
+ </div>`);
+}
+function contact(){
+ show(`<div class="panel">
+ <div class="eyebrow">WE ARE HERE TO HELP</div>
+ <h1 style="color:var(--navy)">Contact Us</h1>
+ <p class="muted">Questions about a product, custom gift or order?
+ Speak directly with KINGZEE COLLECTION.</p>
+ <h2>0559 11 42 51</h2>
+ <a class="btn green" href="https://wa.me/${WA_DEFAULT}" target="_blank" rel="noopener">OPEN WHATSAPP</a>
+ <p class="muted">Delivery arrangements and payment details are confirmed manually.</p>
+ </div>`);
+}
+
+async function hashPin(value){
+ const bytes=new TextEncoder().encode(value);
+ if(window.crypto?.subtle){
+ const result=await crypto.subtle.digest("SHA-256",bytes);
+ return Array.from(new Uint8Array(result)).map(x=>x.toString(16).padStart(2,"0")).join("");
+ }
+ return "local-"+btoa(unescape(encodeURIComponent(value)));
+}
+function ownerPage(){
+ if(loggedIn){dashboard();return;}
+ const saved=localStorage.getItem("kc_owner_hash");
+ show(`<div class="panel" style="max-width:450px;margin:25px auto">
+ <div class="eyebrow">PRIVATE OWNER AREA</div>
+ <h2>${saved?"Owner Login":"Create Owner Access"}</h2>
+ <p class="muted">${saved?"Enter your owner PIN to manage the store.":"Create a PIN for this device to begin managing your store."}</p>
+ <div class="field"><label>${saved?"OWNER PIN":"CREATE PIN"}</label>
+ <input id="pin" type="password" autocomplete="new-password"></div>
+ ${saved?"":'<div class="field"><label>CONFIRM PIN</label><input id="pin2" type="password"></div>'}
+ <button class="btn gold" onclick="${saved?"loginOwner()":"createPin()"}">${saved?"LOGIN":"CREATE OWNER ACCESS"}</button>
+ <div class="notice">Local owner protection is intended for personal device use. It is not server-level security.</div>
+ </div>`);
+}
+async function createPin(){
+ const a=$("pin").value,b=$("pin2").value;
+ if(a.length<4){alert("Use at least 4 characters for your PIN.");return;}
+ if(a!==b){alert("PINs do not match.");return;}
+ localStorage.setItem("kc_owner_hash",await hashPin(a));
+ alert("Owner PIN created.");
+ ownerPage();
+}
+async function loginOwner(){
+ if(await hashPin($("pin").value)===localStorage.getItem("kc_owner_hash")){
+ loggedIn=true;dashboard();
+ }else alert("Incorrect PIN.");
+}
+function logout(){loggedIn=false;ownerPage();}
+
+function dashboard(){
+ if(!loggedIn){ownerPage();return;}
+ const cats=[...new Set([...CATEGORIES,...products.map(p=>p.category)])];
+ show(`<div class="section-title"><h2>Owner Dashboard</h2>
+ <button class="btn red" onclick="logout()">LOG OUT</button></div>
+ <div class="stats">
+ <div class="stat"><strong>${products.length}</strong><small>Products</small></div>
+ <div class="stat"><strong>${cats.length}</strong><small>Categories</small></div>
+ <div class="stat"><strong>${products.filter(p=>p.stock==="Available").length}</strong><small>Available</small></div>
+ </div>
+ <div class="panel" style="margin-top:18px">
+ <h2>${editingId?"Edit Product":"Post New Product"}</h2>
+ <div class="form-grid">
+ <div class="field"><label>PRODUCT NAME *</label><input id="pname"></div>
+ <div class="field"><label>CATEGORY *</label>
+ <input id="pcat" list="cats"><datalist id="cats">${cats.map(c=>`<option value="${esc(c)}">`).join("")}</datalist></div>
+ <div class="field"><label>PRICE (GH₵)</label><input id="pprice" type="number" min="0" step=".01" placeholder="Leave blank for Price on Request"></div>
+ <div class="field"><label>STOCK STATUS</label><select id="pstock"><option>Available</option><option>Out of Stock</option><option>Preorder</option></select></div>
+ <div class="field full"><label>DESCRIPTION</label><textarea id="pdesc"></textarea></div>
+ <div class="field full"><label>VARIATIONS (comma separated)</label><input id="pvars" placeholder="Black, White, Small, Medium"></div>
+ <div class="field full"><label>UPLOAD PRODUCT PHOTOGRAPHS</label><input id="pimages" type="file" accept="image/*" multiple><div class="preview" id="preview"></div><small class="muted">Choose clear photographs from your device. Existing pictures are kept when editing.</small></div>
+ <div class="field full"><label>FEATURE ON HOMEPAGE?</label><select id="pfeatured"><option value="no">No</option><option value="yes">Yes</option></select></div>
+ </div>
+ <div class="actions"><button class="btn gold" onclick="publish()">SAVE AND PUBLISH PRODUCT</button>
+ <button class="btn white" onclick="cancelEdit()">CLEAR FORM</button></div>
+ </div>
+ <div class="panel"><h2>Manage Products</h2><div id="managed"></div></div>
+ <div class="panel"><h2>Website Settings and Backup</h2>
+ <div class="field"><label>WHATSAPP NUMBER (INTERNATIONAL FORMAT)</label><input id="wanumber" value="${esc(localStorage.getItem("kc_whatsapp")||WA_DEFAULT)}"></div>
+ <button class="btn" onclick="saveWA()">SAVE NUMBER</button>
+ <hr>
+ <button class="btn blue" onclick="changePin()">CHANGE OWNER PIN</button>
+ <button class="btn blue" onclick="backup()">EXPORT BACKUP</button>
+ <button class="btn blue" onclick="restore()">RESTORE BACKUP</button>
+ <p class="notice">Keep backup copies outside this browser. Browser data can be deleted by device or browser settings.</p>
+ </div>`);
+ renderManaged();
+ $("pimages").addEventListener("change",previewFiles);
+ if(editingId){
+ const p=products.find(x=>x.id===editingId);
+ if(p){
+ $("pname").value=p.name;$("pcat").value=p.category;
+ $("pprice").value=p.price===null?"":p.price;
+ $("pstock").value=p.stock;$("pdesc").value=p.description||"";
+ $("pvars").value=(p.variations||[]).join(", ");
+ $("pfeatured").value=p.featured?"yes":"no";
+ $("preview").innerHTML=(p.images||[]).map(im=>`<img src="${imageURL(im)}">`).join("");
+ }
+ }
+}
+function previewFiles(){
+ const files=[...$("pimages").files];
+ $("preview").innerHTML=files.map(f=>`<span class="tag">${esc(f.name)}</span>`).join("");
+}
+async function compressImage(file){
+ return new Promise((resolve,reject)=>{
+ const reader=new FileReader();
+ reader.onerror=()=>reject(reader.error);
+ reader.onload=()=>{
+ const img=new Image();
+ img.onerror=()=>reject(new Error("Could not read image"));
+ img.onload=()=>{
+ const max=1500,scale=Math.min(1,max/Math.max(img.width,img.height));
+ const canvas=document.createElement("canvas");
+ canvas.width=Math.round(img.width*scale);
+ canvas.height=Math.round(img.height*scale);
+ const ctx=canvas.getContext("2d");
+ ctx.drawImage(img,0,0,canvas.width,canvas.height);
+ canvas.toBlob(blob=>{
+ if(!blob){reject(new Error("Image conversion failed"));return;}
+ resolve(blob);
+ },"image/jpeg",.82);
+ };
+ img.src=reader.result;
+ };
+ reader.readAsDataURL(file);
+ });
+}
+async function publish(){
+ if(!loggedIn)return;
+ const name=$("pname").value.trim(),category=$("pcat").value.trim();
+ const raw=$("pprice").value.trim();
+ if(!name||!category){alert("Enter the product name and category.");return;}
+ let price=null;
+ if(raw!==""){
+ price=Number(raw);
+ if(!Number.isFinite(price)||price<0){alert("Enter a valid price.");return;}
+ }
+ const old=editingId?products.find(p=>p.id===editingId):null;
+ const images=old?[...(old.images||[])]:[];
+ try{
+ for(const file of [...$("pimages").files]){
+ if(!file.type.startsWith("image/"))continue;
+ images.push(await compressImage(file));
+ }
+ const p={
+ id:old?old.id:id(),name,category,price,
+ description:$("pdesc").value.trim(),
+ stock:$("pstock").value,
+ variations:$("pvars").value.split(",").map(x=>x.trim()).filter(Boolean),
+ featured:$("pfeatured").value==="yes",
+ images,updatedAt:new Date().toISOString()
+ };
+ await saveProduct(p);
+ editingId=null;
+ await refresh();
+ alert("Product saved successfully. It is now in your catalogue.");
+ dashboard();
+ }catch(e){
+ alert("The product could not be saved. Your storage may be full. Try fewer or smaller photographs. Details: "+e.message);
+ }
+}
+function renderManaged(){
+ const el=$("managed");if(!el)return;
+ el.innerHTML=products.map(p=>`<div class="cart-row">
+ <div class="cart-info"><strong>${esc(p.name)}</strong>
+ <div class="muted">${esc(p.category)} · ${p.price===null?"Price on Request":cash(p.price)}</div>
+ <div class="muted">${esc(p.stock)}</div></div>
+ <button class="btn blue" onclick="edit('${p.id}')">EDIT</button>
+ <button class="btn red" onclick="remove('${p.id}')">DELETE</button>
+ </div>`).join("")||'<div class="empty">No products posted yet.</div>';
+}
+function edit(pid){editingId=pid;dashboard();}
+function cancelEdit(){editingId=null;dashboard();}
+async function remove(pid){
+ if(!confirm("Delete this product?"))return;
+ await removeProduct(pid);
+ cart=cart.filter(x=>x.id!==pid);saveCart();
+ await refresh();dashboard();
+}
+function saveWA(){
+ const n=$("wanumber").value.replace(/\D/g,"");
+ if(n.length<10){alert("Enter a valid international number.");return;}
+ localStorage.setItem("kc_whatsapp",n);
+ alert("WhatsApp number updated.");
+}
+async function changePin(){
+ const old=prompt("Enter current PIN:");
+ if(old===null)return;
+ if(await hashPin(old)!==localStorage.getItem("kc_owner_hash")){alert("Incorrect PIN.");return;}
+ const next=prompt("Enter new PIN:");
+ if(!next||next.length<4){alert("PIN must have at least 4 characters.");return;}
+ const confirmPin=prompt("Confirm new PIN:");
+ if(next!==confirmPin){alert("PINs do not match.");return;}
+ localStorage.setItem("kc_owner_hash",await hashPin(next));
+ alert("PIN updated.");
+}
+function blobData(blob){
+ return new Promise((resolve,reject)=>{
+ const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=()=>reject(r.error);r.readAsDataURL(blob);
+ });
+}
+function dataBlob(data){
+ const [head,body]=data.split(",");
+ const type=head.match(/:(.*?);/)[1],bin=atob(body),bytes=new Uint8Array(bin.length);
+ for(let i=0;i<bin.length;i++)bytes[i]=bin.charCodeAt(i);
+ return new Blob([bytes],{type});
+}
+async function backup(){
+ try{
+ const list=await allProducts(),out=[];
+ for(const p of list){
+ const images=[];
+ for(const im of (p.images||[]))images.push(await blobData(im));
+ out.push({...p,images});
+ }
+ const file={app:"KINGZEE COLLECTION",version:2,products:out};
+ const blob=new Blob([JSON.stringify(file)],{type:"application/json"});
+ const url=URL.createObjectURL(blob),a=document.createElement("a");
+ a.href=url;a.download="KINGZEE-COLLECTION-BACKUP.json";
+ document.body.appendChild(a);a.click();a.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),3000);
+ }catch(e){alert("Backup could not be created: "+e.message);}
+}
+function restore(){
+ const input=document.createElement("input");
+ input.type="file";input.accept=".json,application/json";
+ input.onchange=async()=>{
+ const f=input.files[0];if(!f)return;
+ try{
+ const data=JSON.parse(await f.text());
+ if(data.app!=="KINGZEE COLLECTION"||!Array.isArray(data.products))throw new Error("Invalid backup");
+ if(!confirm("Restore the catalogue backup?"))return;
+ for(const p of data.products){
+ p.images=(p.images||[]).map(dataBlob);
+ await saveProduct(p);
+ }
+ await refresh();dashboard();alert("Backup restored.");
+ }catch(e){alert("Could not restore backup: "+e.message);}
+ };
+ input.click();
+}
+async function init(){
+ readCart();
+ try{
+ await openDB();
+ storageMode="indexeddb";
+ }catch(e){
+ storageMode="localstorage";
+ }
+ try{
+ await refresh();
+ saveCart();
+ home();
+ }catch(e){
+ show(`<div class="panel"><h2>Storage problem</h2>
+ <p class="muted">${esc(e.message)}</p>
+ <button class="btn" onclick="location.reload()">RELOAD WEBSITE</button></div>`);
+ }
+}
+init();
+</script>
+</body>
+</html>
